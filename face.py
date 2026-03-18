@@ -80,14 +80,11 @@ while True:
 
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-            face_area = (x2 - x1) * (y2 - y1)
-
             face_center_x = (x1 + x2) // 2
             face_center_y = (y1 + y2) // 2
             cv2.circle(frame, (face_center_x, face_center_y), 5, (0, 0, 255), -1)
 
             if box_x1 < face_center_x < box_x2 and box_y1 < face_center_y < box_y2:
-                direction = "MIDDLE"
                 face_area = (x2 - x1) * (y2 - y1)
                 if face_area < MIN_FACE_AREA:
                     direction = "FORWARD"
